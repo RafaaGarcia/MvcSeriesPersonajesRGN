@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MvcSeriesPersonajesRGN.Models.Serie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-primary" asp-controller="series" asp-action="InsertSerie">
+        Crear Nueva Serie       
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anyo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imagen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anyo)
+            </td>      
+            <td>
+                    <a asp-controller="Series"
+                   asp-action="VerPersonajes"
+                   asp-route-id="@item.Id"
+                   class="btn btn-outline-primary">
+                        Ver Personajes
+                    </a>
+                    <a asp-controller="Series"
+                   asp-action="DetallesSerie"
+                    asp-route-id="@item.Id"
+                    class="btn btn-outline-secondary">
+                    Detalles de la serie
+                </a>
+                    <a asp-controller="Series"
+                   asp-action="DeleteSerie"
+                   asp-route-id="@item.Id"
+                   class="btn btn-outline-danger">
+                        Eliminar Serie
+                    </a>
+
+                    
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
